@@ -1,1 +1,41 @@
-<p>grafica1 works!</p>
+<div class="row">
+  <div class="col-6">
+    <div class="card">
+
+      <app-dona tituloGrafica="Ventas"
+                [doughnutChartLabels]="labels1"
+                [doughnutChartData]="[100,200,350]"></app-dona>
+
+    </div>
+  </div>
+
+  <div class="col-6">
+
+
+    <app-dona
+              [doughnutChartLabels]="['Motores','Llantas','Suspensiones']"
+              [doughnutChartData]="data1"></app-dona>
+
+
+  </div>
+
+  <div class="col-6">
+    <div class="card">
+
+      <app-dona tituloGrafica="Perdidas"
+                [doughnutChartLabels]="['Atole','Tamales','Guajolotas']"
+                [doughnutChartData]="[500,1000,1200]"></app-dona>
+
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="card">
+
+      <app-dona tituloGrafica="Ganancias"
+                [doughnutChartLabels]="labels1"
+                [doughnutChartData]="data1"></app-dona>
+
+    </div>
+  </div>
+</div>
