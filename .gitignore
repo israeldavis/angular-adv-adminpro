@@ -40,6 +40,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 debug.log
+src/debug.log
 /typings
 
 # System Files
