@@ -20,8 +20,9 @@ export class BreadcrumbsComponent implements OnDestroy{
       document.title = `AdminPro - ${this.titulo}`;
     })
    }
+
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.tituloSubs$.unsubscribe();
   }
 
    getArgumentosRuta() {

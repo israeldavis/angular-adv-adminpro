@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthRoutingModule } from './auth/register/auth.routing';
 import { RegisterComponent } from './auth/register/register.component';
+import { AuthGuard } from './guards/auth.guard';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { Grafica1Component } from './pages/grafica1/grafica1.component';
@@ -13,10 +15,11 @@ import { RxjsComponent } from './pages/rxjs/rxjs.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: '',
     component: PagesComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', component: DashboardComponent, data: {titulo: 'Dashboard'} },
+      { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'} },
       { path: 'grafica1', component: Grafica1Component, data: {titulo: 'Gráfica 1'} },
       { path: 'progress', component: ProgressComponent, data: {titulo: 'Progress Bar'} },
       { path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Ajustes'} },
@@ -29,7 +32,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    AuthRoutingModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
