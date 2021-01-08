@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { Grafica1Component } from './pages/grafica1/grafica1.component';
+import { UsuariosComponent } from './pages/mantenimientos/usuarios/usuarios.component';
 import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component';
 import { PagesComponent } from './pages/pages.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
@@ -27,7 +28,10 @@ const routes: Routes = [
       { path: 'promesas', component: PromesasComponent, data: {titulo: 'Promesas'} },
       { path: 'rxjs', component: RxjsComponent, data: {titulo: 'Rxjs'} },
       { path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil'} },
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full'}
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+
+      // Mantenimientos
+      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuarios de aplicación'}}
     ]
    },
   { path: '**', component: NopagefoundComponent }
