@@ -8,12 +8,15 @@ import { AccountSettingsComponent } from './pages/account-settings/account-setti
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { Grafica1Component } from './pages/grafica1/grafica1.component';
 import { UsuariosComponent } from './pages/mantenimientos/usuarios/usuarios.component';
+import { HospitalesComponent } from './pages/mantenimientos/hospitales/hospitales.component';
+import { MedicosComponent } from './pages/mantenimientos/medicos/medicos.component';
 import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component';
 import { PagesComponent } from './pages/pages.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ProgressComponent } from './pages/progress/progress.component';
 import { PromesasComponent } from './pages/promesas/promesas.component';
 import { RxjsComponent } from './pages/rxjs/rxjs.component';
+import { MedicoComponent } from './pages/mantenimientos/medicos/medico.component';
 
 const routes: Routes = [
   {
@@ -31,7 +34,10 @@ const routes: Routes = [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
       // Mantenimientos
-      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuarios de aplicación'}}
+      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuarios de aplicación'}},
+      { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Catálogo de Hospitales'}},
+      { path: 'medicos', component: MedicosComponent, data: {titulo: 'Catálogo de Médicos'}},
+      { path: 'medico/:id', component: MedicoComponent, data: {titulo: 'Médico'}}
     ]
    },
   { path: '**', component: NopagefoundComponent }
