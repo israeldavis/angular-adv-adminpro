@@ -17,6 +17,8 @@ import { ProgressComponent } from './pages/progress/progress.component';
 import { PromesasComponent } from './pages/promesas/promesas.component';
 import { RxjsComponent } from './pages/rxjs/rxjs.component';
 import { MedicoComponent } from './pages/mantenimientos/medicos/medico.component';
+import { BusquedaComponent } from './pages/busqueda/busqueda.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -31,10 +33,11 @@ const routes: Routes = [
       { path: 'promesas', component: PromesasComponent, data: {titulo: 'Promesas'} },
       { path: 'rxjs', component: RxjsComponent, data: {titulo: 'Rxjs'} },
       { path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil'} },
+      { path: 'buscar/:termino', component: BusquedaComponent, data: {titulo: 'Busquedas'} },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
       // Mantenimientos
-      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuarios de aplicación'}},
+      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuarios de aplicación'}, canActivate: [AdminGuard]},
       { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Catálogo de Hospitales'}},
       { path: 'medicos', component: MedicosComponent, data: {titulo: 'Catálogo de Médicos'}},
       { path: 'medico/:id', component: MedicoComponent, data: {titulo: 'Médico'}}

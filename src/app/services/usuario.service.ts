@@ -43,6 +43,15 @@ export class UsuarioService {
     }
   }
 
+  get role():  'ADMIN_ROLE' | 'USER_ROLE' {
+    return this.usuario.role;
+  }
+
+  guardarLocalStorage(token: string, menu: any) {
+        localStorage.setItem('token', token);
+        localStorage.setItem('menu', JSON.stringify(menu));
+  }
+
   googleInit() {
     gapi.load('auth2', () => {
       // Retrieve the singleton for the GoogleAuth library and set up the client.
@@ -56,6 +65,7 @@ export class UsuarioService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
 
     this.auth2.signOut().then( () => {
 
@@ -75,7 +85,8 @@ export class UsuarioService {
 
         this.usuario = new Usuario( nombre, email, '', img, google, role, uid);
         console.log('Usuario en el service: ' + JSON.stringify(this.usuario));
-        localStorage.setItem('token', resp.token);
+        this.guardarLocalStorage(resp.token, resp.menu);
+
         return true;
       }),
       catchError( error => of(false) )
@@ -86,7 +97,7 @@ export class UsuarioService {
     return this.http.post(`${base_url}/usuarios`, formData)
       .pipe(
         tap( (resp: any)=> {
-          localStorage.setItem('token', resp.token )
+          this.guardarLocalStorage(resp.token, resp.menu);
         })
       )
   }
@@ -113,8 +124,8 @@ export class UsuarioService {
       map( (resp: any) => {
         console.log('Resp: ' + JSON.stringify(resp));
         localStorage.setItem('id', resp.id);
-        localStorage.setItem('token', resp.token);
         localStorage.setItem('usuario', JSON.stringify(resp.usuario) );
+        this.guardarLocalStorage(resp.token, resp.menu);
         return true;
       })
     )
@@ -124,7 +135,7 @@ export class UsuarioService {
 
     return this.http.post(`${base_url}/login/google`, {token}).pipe(
       tap( (resp: any) => {
-        localStorage.setItem('token', resp.token)
+        this.guardarLocalStorage(resp.token, resp.menu);
       })
     )
   }

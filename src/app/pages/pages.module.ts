@@ -18,6 +18,7 @@ import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.comp
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { ImagenPipe } from '../pipes/imagen.pipe';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 
@@ -37,7 +38,8 @@ import { MedicoComponent } from './mantenimientos/medicos/medico.component';
     HospitalesComponent,
     MedicosComponent,
     ImagenPipe,
-    MedicoComponent
+    MedicoComponent,
+    BusquedaComponent
   ],
   exports: [
     DashboardComponent,
